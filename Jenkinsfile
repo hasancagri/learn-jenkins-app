@@ -33,8 +33,9 @@ pipeline {
             steps {
                 sh '''
                    docker pull mcr.microsoft.com/playwright:v1.39.0-jammy
-                   npm install -g serve
-                   serve -s build
+                   npm install serve
+                   node_modules/.bin/serve -s build &
+                   sleep 10
                    npx playwrihgt test
                 '''
             }
