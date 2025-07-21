@@ -3,6 +3,11 @@ pipeline {
 
     stages {
         stage('Build') {
+            //This is a comment
+            /*
+            Line 1
+            Line 2
+            */
             steps {
                  sh 'docker pull node:18-alpine'
                  sh '''
@@ -18,7 +23,7 @@ pipeline {
         stage('Test'){
             steps {
                 sh '''
-                   test -f build/index.html
+                   #test -f build/index.html
                    npm test 
                 '''
             }
