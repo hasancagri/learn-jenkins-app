@@ -28,10 +28,16 @@ pipeline {
                 '''
             }
         }
-    }
-    post {
-        always {
-            junit 'test-results/junit.xml'
+
+        stage('E2E'){
+            steps {
+                sh '''
+                   docker pull mcr.microsoft.com/playwright:v1.39.0-jammy
+                   npm install -g serve
+                   serve -s build
+                   npx playwrihgt test
+                '''
+            }
         }
     }
 }
